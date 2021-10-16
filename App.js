@@ -7,7 +7,9 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
 } from "react-native";
+import AppTextInput from "./app/components/AppTextInput";
 import Card from "./app/components/Card";
 import ListItem from "./app/components/ListItem";
 import ListItemSeparator from "./app/components/ListItemSeparator";
@@ -42,28 +44,29 @@ const initialItems = [
 ];
 
 export default function App() {
-  var [items, setItems] = useState(initialItems);
-  var [refreshing, setRefreshing] = useState(false);
+  // var [items, setItems] = useState(initialItems);
+  // var [refreshing, setRefreshing] = useState(false);
 
-  const handleDelete = (item) => {
-    const filteredList = items.filter((i) => i.id != item.id);
-    setItems(filteredList);
-  };
+  // const handleDelete = (item) => {
+  //   const filteredList = items.filter((i) => i.id != item.id);
+  //   setItems(filteredList);
+  // };
 
-  const renderItems = ({ item }) => (
-    <ListItem
-      title={item.name}
-      subTitle={item.phone}
-      image={item.image}
-      onPress={() => alert("Tapped")}
-      onDelete={() => handleDelete(item)}
-    />
-  );
+  // const renderItems = ({ item }) => (
+  //   <ListItem
+  //     title={item.name}
+  //     subTitle={item.phone}
+  //     image={item.image}
+  //     onPress={() => alert("Tapped")}
+  //     onDelete={() => handleDelete(item)}
+  //   />
+  // );
 
   // return <WelcomeScreen />;
   return (
     <Screen>
-      <FlatList
+      <AppTextInput icon="email" placeholder="Phone" />
+      {/* <FlatList
         data={items}
         keyExtractor={(item) => item.id}
         renderItem={renderItems}
@@ -81,7 +84,7 @@ export default function App() {
             },
           ]);
         }}
-      />
+      /> */}
     </Screen>
   );
 }
