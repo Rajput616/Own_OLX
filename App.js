@@ -14,6 +14,8 @@ import Card from "./app/components/Card";
 import ListItem from "./app/components/ListItem";
 import ListItemSeparator from "./app/components/ListItemSeparator";
 import Screen from "./app/components/Screen";
+import ListingScreen from "./app/Screens/ListingScreen";
+import LoginScreen from "./app/Screens/LoginScreen";
 import WelcomeScreen from "./app/Screens/WelcomeScreen";
 
 const initialItems = [
@@ -64,9 +66,11 @@ export default function App() {
 
   // return <WelcomeScreen />;
   return (
-    <Screen>
-      <AppTextInput icon="email" placeholder="Phone" />
-      {/* <FlatList
+    <LoginScreen />
+    // <ListingScreen />
+    // <Screen>
+    // <AppTextInput icon="email" placeholder="Phone" />
+    /* <FlatList
         data={items}
         keyExtractor={(item) => item.id}
         renderItem={renderItems}
@@ -84,8 +88,8 @@ export default function App() {
             },
           ]);
         }}
-      /> */}
-    </Screen>
+      /> */
+    // </Screen>
   );
 }
 
