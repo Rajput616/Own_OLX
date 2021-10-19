@@ -1,41 +1,23 @@
 import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import Colors from "../Config/Colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import AppStyles from "../Config/AppStyles";
 
 function AppTextInput({ icon, style, ...otherProps }) {
   return (
-    <View style={[styles.container, style]}>
-      <MaterialCommunityIcons
+    <View style={[AppStyles.appInputBackground, style]}>
+      <MaterialIcons
         name={icon}
         size={20}
         color={Colors.Medium}
-        style={styles.icon}
+        style={AppStyles.appInputIcon}
       />
-      <TextInput style={styles.textInput} {...otherProps} />
+      <TextInput style={AppStyles.appInputText} {...otherProps} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.Light,
-    borderRadius: 25,
-    height: 50,
-    flexDirection: "row",
-    width: "100%",
-    padding: 15,
-    marginBottom: 20,
-    alignItems: "center",
-  },
-  icon: {
-    marginRight: 10,
-  },
-  textInput: {
-    fontSize: 18,
-    width: "100%",
-    paddingRight: 30,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default AppTextInput;

@@ -16,34 +16,8 @@ import ListItemSeparator from "./app/components/ListItemSeparator";
 import Screen from "./app/components/Screen";
 import ListingScreen from "./app/Screens/ListingScreen";
 import LoginScreen from "./app/Screens/LoginScreen";
+import SignupScreen from "./app/Screens/SignupScreen";
 import WelcomeScreen from "./app/Screens/WelcomeScreen";
-
-const initialItems = [
-  {
-    id: 1,
-    name: "Saurabh Singh",
-    phone: "8800754576",
-    // image: "https://www.lorempixel.com/200/200/people/1",
-  },
-  {
-    id: 2,
-    name: "Vaibhav Singh",
-    // phone: "777777777",
-    image: "https://www.lorempixel.com/200/200/people/2",
-  },
-  {
-    id: 3,
-    name: "Shilpi Sen Gupta",
-    phone: "8888888888",
-    image: "https://www.lorempixel.com/200/200/people/3",
-  },
-  {
-    id: 4,
-    name: "Chetan Singh",
-    phone: "999999999",
-    image: "https://www.lorempixel.com/200/200/people/4",
-  },
-];
 
 export default function App() {
   // var [items, setItems] = useState(initialItems);
@@ -66,7 +40,8 @@ export default function App() {
 
   // return <WelcomeScreen />;
   return (
-    <LoginScreen />
+    <SignupScreen />
+    // <LoginScreen />
     // <ListingScreen />
     // <Screen>
     // <AppTextInput icon="email" placeholder="Phone" />
