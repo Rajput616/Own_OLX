@@ -40,8 +40,8 @@ export default function App() {
 
   // return <WelcomeScreen />;
   return (
-    <SignupScreen />
-    // <LoginScreen />
+    // <SignupScreen />
+    <LoginScreen />
     // <ListingScreen />
     // <Screen>
     // <AppTextInput icon="email" placeholder="Phone" />
