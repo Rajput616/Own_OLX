@@ -10,6 +10,9 @@ import * as Yup from "yup";
 import AppText from "../components/AppText";
 import routes from "../navigation/routes";
 import AuthContext from "../auth/context";
+import AppFormField from "../components/AppFormField";
+import AppFormButton from "../components/AppFormButton";
+import AppForm from "../components/AppForm";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -20,9 +23,6 @@ function LoginScreen({ navigation }) {
   const authContext = useContext(AuthContext);
 
   const handleLogin = (v) => {
-    console.log("Email = " + v.email);
-    console.log("Password = " + v.password);
-
     authContext.setUser(v);
   };
 
@@ -33,35 +33,25 @@ function LoginScreen({ navigation }) {
         style={[AppStyles.logo, styles.loginLogo]}
       />
 
-      <Formik
+      <AppForm
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => handleLogin(values)}
         validationSchema={validationSchema}
       >
-        {({ handleSubmit, handleChange, errors }) => (
-          <>
-            <AppTextInput
-              placeholder="Email"
-              onChangeText={handleChange("email")}
-              icon="email"
-              keyboardType="email-address"
-            />
-            <AppText>{errors.email}</AppText>
-            <AppTextInput
-              placeholder="Password"
-              onChangeText={handleChange("password")}
-              icon="lock"
-              secureTextEntry={true}
-            />
-            <AppText>{errors.password}</AppText>
-            <AppButton
-              title="Login"
-              color={Colors.PrimaryColor}
-              onPress={handleSubmit}
-            />
-          </>
-        )}
-      </Formik>
+        <AppFormField
+          name="email"
+          icon="email"
+          placeholder="Email"
+          keyboardType="email-address"
+        />
+        <AppFormField
+          name="password"
+          placeholder="Password"
+          icon="lock"
+          secureTextEntry={true}
+        />
+        <AppFormButton title="Login" />
+      </AppForm>
 
       <TouchableOpacity
         onPress={() => navigation.navigate(routes.SIGNUP_SCREEN)}

@@ -4,7 +4,7 @@ import Colors from "../config/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import AppStyles from "../config/AppStyles";
 
-function AppTextInput({ icon, style, ...otherProps }) {
+const AppTextInput = React.forwardRef(({ icon, style, ...otherProps }, ref) => {
   return (
     <View style={[AppStyles.appInputBackground, style]}>
       <MaterialIcons
@@ -13,10 +13,10 @@ function AppTextInput({ icon, style, ...otherProps }) {
         color={Colors.Medium}
         style={AppStyles.appInputIcon}
       />
-      <TextInput style={AppStyles.appInputText} {...otherProps} />
+      <TextInput style={AppStyles.appInputText} {...otherProps} ref={ref} />
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({});
 

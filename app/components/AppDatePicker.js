@@ -1,32 +1,45 @@
 import React, { useState } from "react";
+import { useFormikContext } from "formik";
 import {
   View,
   StyleSheet,
   TextInput,
   TouchableWithoutFeedback,
+  Platform,
 } from "react-native";
 import Colors from "../config/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import AppStyles from "../config/AppStyles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-function AppDatePicker({ icon, style, ...otherProps }) {
+function AppDatePicker({ name, icon, style, ...otherProps }) {
+  const { setFieldValue } = useFormikContext();
+
   var [show, setShow] = useState(false);
   var [date, setDate] = useState("");
 
   const handlePress = () => {
-    setShow(true);
+    showDatePicker(true);
+  };
+
+  const showDatePicker = (s) => {
+    if (Platform.OS === "ios") {
+      setShow(true);
+    } else {
+      setShow(s);
+    }
   };
 
   const onChange = (event, selectedDate) => {
-    setDate(
+    var date =
       selectedDate.getDate() +
-        " - " +
-        (selectedDate.getMonth() + 1) +
-        " - " +
-        selectedDate.getFullYear()
-    );
-    setShow(false);
+      " - " +
+      (selectedDate.getMonth() + 1) +
+      " - " +
+      selectedDate.getFullYear();
+    setDate(date);
+    showDatePicker(false);
+    setFieldValue(name, date);
   };
 
   return (
