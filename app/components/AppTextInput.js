@@ -1,8 +1,8 @@
 import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
-import Colors from "../Config/Colors";
+import Colors from "../config/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
-import AppStyles from "../Config/AppStyles";
+import AppStyles from "../config/AppStyles";
 
 function AppTextInput({ icon, style, ...otherProps }) {
   return (

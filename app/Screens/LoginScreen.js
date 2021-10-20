@@ -1,23 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import AppButton from "../components/AppButton";
 import AppTextInput from "../components/AppTextInput";
 import Screen from "../components/Screen";
-import AppStyles from "../Config/AppStyles";
-import Colors from "../Config/Colors";
+import AppStyles from "../config/AppStyles";
+import Colors from "../config/Colors";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import AppText from "../components/AppText";
+import routes from "../navigation/routes";
+import AuthContext from "../auth/context";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(6).label("Password"),
 });
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
+  const authContext = useContext(AuthContext);
+
   const handleLogin = (v) => {
     console.log("Email = " + v.email);
     console.log("Password = " + v.password);
+
+    authContext.setUser(v);
   };
 
   return (
@@ -57,7 +63,9 @@ function LoginScreen(props) {
         )}
       </Formik>
 
-      <TouchableOpacity onPress={() => console.log("Register")}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate(routes.SIGNUP_SCREEN)}
+      >
         <Text>Register</Text>
       </TouchableOpacity>
     </Screen>

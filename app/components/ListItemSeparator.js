@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Colors from "../Config/Colors";
+import Colors from "../config/Colors";
 
 function ListItemSeparator({ marginStart, marginEnd }) {
   return (

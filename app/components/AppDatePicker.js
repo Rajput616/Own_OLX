@@ -5,9 +5,9 @@ import {
   TextInput,
   TouchableWithoutFeedback,
 } from "react-native";
-import Colors from "../Config/Colors";
+import Colors from "../config/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
-import AppStyles from "../Config/AppStyles";
+import AppStyles from "../config/AppStyles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 function AppDatePicker({ icon, style, ...otherProps }) {

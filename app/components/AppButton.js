@@ -6,7 +6,7 @@ import {
   Touchable,
   TouchableOpacity,
 } from "react-native";
-import Colors from "../Config/Colors";
+import Colors from "../config/Colors";
 
 function AppButton({ title, onPress, color }) {
   return (

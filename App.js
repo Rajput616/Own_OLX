@@ -1,81 +1,21 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
-import {
-  FlatList,
-  Platform,
-  StatusBar,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-} from "react-native";
-import AppTextInput from "./app/components/AppTextInput";
-import Card from "./app/components/Card";
-import ListItem from "./app/components/ListItem";
-import ListItemSeparator from "./app/components/ListItemSeparator";
-import Screen from "./app/components/Screen";
-import ListingScreen from "./app/Screens/ListingScreen";
-import LoginScreen from "./app/Screens/LoginScreen";
-import SignupScreen from "./app/Screens/SignupScreen";
-import WelcomeScreen from "./app/Screens/WelcomeScreen";
+import { StyleSheet } from "react-native";
+import AuthContext from "./app/auth/context";
+import AppNavigator from "./app/navigation/AppNavigator";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
 
 export default function App() {
-  // var [items, setItems] = useState(initialItems);
-  // var [refreshing, setRefreshing] = useState(false);
+  const [user, setUser] = useState();
 
-  // const handleDelete = (item) => {
-  //   const filteredList = items.filter((i) => i.id != item.id);
-  //   setItems(filteredList);
-  // };
-
-  // const renderItems = ({ item }) => (
-  //   <ListItem
-  //     title={item.name}
-  //     subTitle={item.phone}
-  //     image={item.image}
-  //     onPress={() => alert("Tapped")}
-  //     onDelete={() => handleDelete(item)}
-  //   />
-  // );
-
-  // return <WelcomeScreen />;
   return (
-    // <SignupScreen />
-    <LoginScreen />
-    // <ListingScreen />
-    // <Screen>
-    // <AppTextInput icon="email" placeholder="Phone" />
-    /* <FlatList
-        data={items}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItems}
-        ItemSeparatorComponent={() => (
-          <ListItemSeparator marginStart={40} marginEnd={40} />
-        )}
-        refreshing={refreshing}
-        onRefresh={() => {
-          setItems([
-            {
-              id: 5,
-              name: "Madhu Yadav",
-              phone: "111111111",
-              image: "https://www.lorempixel.com/200/200/people/5",
-            },
-          ]);
-        }}
-      /> */
-    // </Screen>
+    <AuthContext.Provider value={{ user, setUser }}>
+      <NavigationContainer theme={navigationTheme}>
+        {user ? <AppNavigator /> : <AuthNavigator />}
+      </NavigationContainer>
+    </AuthContext.Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "gray",
-  },
-  FlatList: {
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-});
+const styles = StyleSheet.create({});

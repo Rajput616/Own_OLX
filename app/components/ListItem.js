@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
-import Colors from "../Config/Colors";
+import Colors from "../config/Colors";
 import ListItemDeleteAction from "./ListItemDeleteAction";
 
 function ListItem({ title, subTitle, image, onPress, onDelete }) {

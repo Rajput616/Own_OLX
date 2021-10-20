@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
-import Colors from "../Config/Colors";
+import Colors from "../config/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function ListItemDeleteAction({ onPress }) {

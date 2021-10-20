@@ -4,8 +4,8 @@ import AppButton from "../components/AppButton";
 import AppDatePicker from "../components/AppDatePicker";
 import AppTextInput from "../components/AppTextInput";
 import Screen from "../components/Screen";
-import AppStyles from "../Config/AppStyles";
-import Colors from "../Config/Colors";
+import AppStyles from "../config/AppStyles";
+import Colors from "../config/Colors";
 
 function SignupScreen(props) {
   return (
