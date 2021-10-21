@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     color: Colors.White,
     fontSize: 18,
     fontWeight: "bold",
-    textTransform: "uppercase",
   },
 });
 

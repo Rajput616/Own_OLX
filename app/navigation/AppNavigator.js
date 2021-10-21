@@ -5,15 +5,16 @@ import ListingsScreen from "../screens/ListingScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { View } from "react-native";
 import NewListingButton from "./NewListingButton";
+import FeedNavigator from "./FeedNavigator";
 
 const Tab = createBottomTabNavigator();
 
 function AppNavigator(props) {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
-        name={routes.LISTINGS_SCREEN}
-        component={ListingsScreen}
+        name={routes.FEED_NAVIGATOR}
+        component={FeedNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
