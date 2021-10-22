@@ -2,33 +2,32 @@ import { useFormikContext } from "formik";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import Colors from "../config/Colors";
+import AppPicker from "./AppPicker";
 import AppText from "./AppText";
-import AppTextInput from "./AppTextInput";
 
-const AppFormField = React.forwardRef(({ name, width, ...otherProps }, ref) => {
-  const { handleChange, setFieldTouched, errors, touched } = useFormikContext();
+function AppFormPicker({ name, width, ...otherProps }) {
+  const { setFieldValue, errors } = useFormikContext();
 
   return (
     <View style={styles.container}>
-      <AppTextInput
-        style={styles.textInput}
-        onChangeText={handleChange(name)}
-        onBlur={() => setFieldTouched(name)}
+      <AppPicker
+        style={styles.picker}
         {...otherProps}
-        ref={ref}
+        onSelectItem={(item) => setFieldValue(name, item.label)}
         width={width}
       />
-      {touched[name] && errors[name] && (
+
+      {errors[name] && (
         <AppText style={styles.errorMessage}>{errors[name]}</AppText>
       )}
     </View>
   );
-});
+}
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 15,
     marginBottom: 25,
+    paddingHorizontal: 15,
   },
   errorMessage: {
     color: Colors.Danger,
@@ -38,6 +37,9 @@ const styles = StyleSheet.create({
   textInput: {
     marginBottom: 0,
   },
+  picker: {
+    marginBottom: 0,
+  },
 });
 
-export default AppFormField;
+export default AppFormPicker;

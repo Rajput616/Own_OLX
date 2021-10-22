@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { View } from "react-native";
 import NewListingButton from "./NewListingButton";
 import FeedNavigator from "./FeedNavigator";
+import ListingEditScreen from "../screens/ListingEditScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,10 +24,14 @@ function AppNavigator(props) {
       />
       <Tab.Screen
         name={routes.EDIT_LISTING_SCREEN}
-        component={ListingsScreen}
-        options={{
-          tabBarButton: () => <NewListingButton />,
-        }}
+        component={ListingEditScreen}
+        options={({ navigation }) => ({
+          tabBarButton: () => (
+            <NewListingButton
+              onPress={() => navigation.navigate(routes.EDIT_LISTING_SCREEN)}
+            />
+          ),
+        })}
       />
       <Tab.Screen
         name={routes.ACCOUNT_SCREEN}

@@ -16,7 +16,6 @@ const AppStyles = StyleSheet.create({
     borderRadius: 25,
     height: 50,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginBottom: 20,
     alignItems: "center",
