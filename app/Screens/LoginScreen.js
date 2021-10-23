@@ -1,13 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
-import AppButton from "../components/AppButton";
-import AppTextInput from "../components/AppTextInput";
 import Screen from "../components/Screen";
 import AppStyles from "../config/AppStyles";
-import Colors from "../config/Colors";
-import { Formik } from "formik";
 import * as Yup from "yup";
-import AppText from "../components/AppText";
 import routes from "../navigation/routes";
 import AuthContext from "../auth/context";
 import AppFormField from "../components/AppFormField";
@@ -56,7 +51,7 @@ function LoginScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => navigation.navigate(routes.SIGNUP_SCREEN)}
       >
-        <Text>Register</Text>
+        <Text style={styles.register}>Register</Text>
       </TouchableOpacity>
     </Screen>
   );
@@ -65,12 +60,15 @@ function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    padding: 20,
+    paddingHorizontal: 15,
   },
   loginLogo: {
     marginTop: 60,
     marginBottom: 60,
+    alignSelf: "center",
+  },
+  register: {
+    alignSelf: "center",
   },
 });
 

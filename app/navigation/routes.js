@@ -7,4 +7,5 @@ export default Object.freeze({
   EDIT_LISTING_SCREEN: "EditListing",
   ACCOUNT_SCREEN: "Account",
   FEED_NAVIGATOR: "FeedNavigator",
+  ACCOUNT_NAVIGATOR: "AccountNavigator",
 });

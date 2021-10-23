@@ -72,9 +72,7 @@ function AppDatePicker({ name, icon, style, ...otherProps }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 15,
-  },
+  container: {},
 });
 
 export default AppDatePicker;

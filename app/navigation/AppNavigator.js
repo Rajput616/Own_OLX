@@ -7,6 +7,8 @@ import { View } from "react-native";
 import NewListingButton from "./NewListingButton";
 import FeedNavigator from "./FeedNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
+import AccountScreen from "../screens/AccountScreen";
+import AccountNavigator from "./AccountNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,8 +36,8 @@ function AppNavigator(props) {
         })}
       />
       <Tab.Screen
-        name={routes.ACCOUNT_SCREEN}
-        component={ListingsScreen}
+        name={routes.ACCOUNT_NAVIGATOR}
+        component={AccountNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />

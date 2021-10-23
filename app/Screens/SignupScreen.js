@@ -115,12 +115,12 @@ function SignupScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
     padding: 20,
   },
   loginLogo: {
     marginTop: 20,
     marginBottom: 40,
+    alignSelf: "center",
   },
 });
 

@@ -27,7 +27,6 @@ function AppFormPicker({ name, width, ...otherProps }) {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 25,
-    paddingHorizontal: 15,
   },
   errorMessage: {
     color: Colors.Danger,

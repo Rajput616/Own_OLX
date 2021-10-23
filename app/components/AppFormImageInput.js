@@ -2,32 +2,29 @@ import { useFormikContext } from "formik";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import Colors from "../config/Colors";
+import AppPicker from "./AppPicker";
 import AppText from "./AppText";
-import AppTextInput from "./AppTextInput";
+import ImageInputList from "./ImageInputList";
 
-const AppFormField = React.forwardRef(({ name, width, ...otherProps }, ref) => {
-  const { handleChange, setFieldTouched, errors, touched } = useFormikContext();
+function AppFormImageInput({ name, width, ...otherProps }) {
+  const { setFieldValue, errors } = useFormikContext();
 
   return (
     <View style={styles.container}>
-      <AppTextInput
-        style={styles.textInput}
-        onChangeText={handleChange(name)}
-        onBlur={() => setFieldTouched(name)}
-        {...otherProps}
-        ref={ref}
-        width={width}
+      <ImageInputList
+        onChange={(imageUris) => setFieldValue(name, imageUris)}
       />
-      {touched[name] && errors[name] && (
+
+      {errors[name] && (
         <AppText style={styles.errorMessage}>{errors[name]}</AppText>
       )}
     </View>
   );
-});
+}
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 20,
+    marginBottom: 25,
   },
   errorMessage: {
     color: Colors.Danger,
@@ -39,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppFormField;
+export default AppFormImageInput;

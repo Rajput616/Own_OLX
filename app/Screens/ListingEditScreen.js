@@ -6,8 +6,10 @@ import Screen from "../components/Screen";
 import * as Yup from "yup";
 import AppFormPicker from "../components/AppFormPicker";
 import AppFormButton from "../components/AppFormButton";
+import AppFormImageInput from "../components/AppFormImageInput";
 
 const validationSchema = Yup.object().shape({
+  images: Yup.array().required().min(1, "Please select at least 1 image"),
   title: Yup.string().required().label("Title"),
   price: Yup.string().required().label("Price"),
   category: Yup.string().required().label("Category"),
@@ -17,10 +19,17 @@ function ListingEditScreen(props) {
   return (
     <Screen style={styles.container}>
       <AppForm
-        initialValues={{ title: "", prices: "", category: "", description: "" }}
+        initialValues={{
+          images: "",
+          title: "",
+          prices: "",
+          category: "",
+          description: "",
+        }}
         onSubmit={() => console.log("Submitted")}
         validationSchema={validationSchema}
       >
+        <AppFormImageInput name="images" />
         <AppFormField name="title" placeholder="Title" icon="edit" />
         <AppFormField
           name="price"
@@ -49,6 +58,7 @@ function ListingEditScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 15,
   },
 });
 
