@@ -1,20 +1,9 @@
-import { Formik } from "formik";
-import React, { useRef } from "react";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import AppButton from "../components/AppButton";
+import React, { useRef, useContext } from "react";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import AppDatePicker from "../components/AppDatePicker";
-import AppTextInput from "../components/AppTextInput";
-import Screen from "../components/Screen";
 import * as Yup from "yup";
 import AppStyles from "../config/AppStyles";
-import Colors from "../config/Colors";
+import AuthContext from "../auth/context";
 import AppFormField from "../components/AppFormField";
 import AppFormButton from "../components/AppFormButton";
 import AppForm from "../components/AppForm";
@@ -36,8 +25,10 @@ function SignupScreen(props) {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
+  const authContext = useContext(AuthContext);
+
   const handleSignup = (v) => {
-    console.log("User Details - " + JSON.stringify(v));
+    authContext.setUser(v);
   };
 
   return (

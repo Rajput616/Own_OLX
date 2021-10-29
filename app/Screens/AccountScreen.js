@@ -4,6 +4,7 @@ import Icon from "../components/Icon";
 import ListItem from "../components/ListItem";
 import ListItemSeparator from "../components/ListItemSeparator";
 import Colors from "../config/Colors";
+import routes from "../navigation/routes";
 
 const menuItems = [
   {
@@ -19,10 +20,11 @@ const menuItems = [
       name: "email",
       backgroundColor: Colors.SecondaryColor,
     },
+    targetScreen: routes.MESSAGES,
   },
 ];
 
-function AccountScreen(props) {
+function AccountScreen({ navigation }) {
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
@@ -49,6 +51,7 @@ function AccountScreen(props) {
                     size={30}
                   />
                 }
+                onPress={() => navigation.navigate(item.targetScreen)}
               />
             </View>
           )}

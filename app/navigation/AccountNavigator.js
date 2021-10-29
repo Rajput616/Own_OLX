@@ -2,17 +2,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import AccountScreen from "../screens/AccountScreen";
 import routes from "./routes";
+import MessagesScreen from "../screens/MessagesScreen";
 
 const Stack = createNativeStackNavigator();
 
 function AccountNavigator(props) {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={routes.ACCOUNT_SCREEN} component={AccountScreen} />
-      {/* <Stack.Screen
-        name={routes.LISTING_DETAIL_SCREEN}
-        component={ListingDetailScreen}
-      /> */}
+      <Stack.Screen name="Profile" component={AccountScreen} />
+      <Stack.Screen name={routes.MESSAGES} component={MessagesScreen} />
     </Stack.Navigator>
   );
 }
