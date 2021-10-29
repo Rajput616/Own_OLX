@@ -8,10 +8,13 @@ import AppTextInput from "../components/AppTextInput";
 import AppButton from "../components/AppButton";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-function ListingDetailScreen({ navigation }) {
+function ListingDetailScreen({ navigation, route }) {
   return (
     <Screen>
-      <Image style={styles.image} source={require("../assets/jacket.jpg")} />
+      <Image
+        style={styles.image}
+        source={{ uri: route.params.images[0].url }}
+      />
       <TouchableOpacity
         style={styles.closeButton}
         onPress={() => navigation.pop()}
@@ -23,8 +26,8 @@ function ListingDetailScreen({ navigation }) {
         />
       </TouchableOpacity>
       <View style={styles.textContainer}>
-        <AppText style={styles.title}>Red Jacket</AppText>
-        <AppText style={styles.price}>$100</AppText>
+        <AppText style={styles.title}>{route.params.title}</AppText>
+        <AppText style={styles.price}>${route.params.price}</AppText>
       </View>
 
       <View style={styles.sellerContainer}>

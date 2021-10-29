@@ -28,6 +28,11 @@ const AppStyles = StyleSheet.create({
   appInputIcon: {
     marginRight: 10,
   },
+  loader: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+  },
 });
 
 export default AppStyles;

@@ -9,13 +9,13 @@ import ListItemSeparator from "../components/ListItemSeparator";
 const initialMessages = [
   {
     id: "1",
-    title: "Mosh Hamedani",
+    title: "Saurabh Rajput",
     description: "Hey! Is this item still available?",
     image: "https://lorempixel.com/400/400/people/3/",
   },
   {
     id: "2",
-    title: "Mosh Hamedani",
+    title: "Vaibhav Kumar",
     description:
       "I'm interested in this item. When will you be able to post it?",
     image: "https://lorempixel.com/400/400/people/3/",
@@ -53,8 +53,8 @@ function MessagesScreen(props) {
           setMessages([
             {
               id: "2",
-              title: "T2",
-              description: "D2",
+              title: "Madhu",
+              description: "I want this product",
               image: require("../assets/couch.jpg"),
             },
           ]);
