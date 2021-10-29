@@ -13,7 +13,7 @@ function AppFormPicker({ name, width, ...otherProps }) {
       <AppPicker
         style={styles.picker}
         {...otherProps}
-        onSelectItem={(item) => setFieldValue(name, item.label)}
+        onSelectItem={(item) => setFieldValue(name, item.value)}
         width={width}
       />
 

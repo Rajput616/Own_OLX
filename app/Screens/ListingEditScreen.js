@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import AppForm from "../components/AppForm";
 import AppFormField from "../components/AppFormField";
@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import AppFormPicker from "../components/AppFormPicker";
 import AppFormButton from "../components/AppFormButton";
 import AppFormImageInput from "../components/AppFormImageInput";
+import listingsApi from "../api/listings";
 
 const validationSchema = Yup.object().shape({
   images: Yup.array().required().min(1, "Please select at least 1 image"),
@@ -16,17 +17,35 @@ const validationSchema = Yup.object().shape({
 });
 
 function ListingEditScreen(props) {
+  const [progress, setProgress] = useState(0);
+
+  const onUploadProgress = (progress) => {
+    setProgress(progress);
+  };
+
+  const addListing = async (listing) => {
+    const response = await listingsApi.addListings(listing, onUploadProgress);
+
+    if (!response.ok) {
+      return alert("Listing couldn't be added. Please try again");
+    }
+
+    //show success
+
+    alert("Listing created successfully");
+  };
+
   return (
     <Screen style={styles.container}>
       <AppForm
         initialValues={{
           images: "",
           title: "",
-          prices: "",
+          price: "",
           category: "",
           description: "",
         }}
-        onSubmit={() => console.log("Submitted")}
+        onSubmit={(listing) => addListing(listing)}
         validationSchema={validationSchema}
       >
         <AppFormImageInput name="images" />
