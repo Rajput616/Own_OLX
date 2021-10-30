@@ -55,7 +55,7 @@ function MessagesScreen(props) {
               id: "2",
               title: "Madhu",
               description: "I want this product.",
-              image: require("../assets/couch.jpg"),
+              image: "https://lorempixel.com/400/400/people/3/",
             },
           ]);
         }}
