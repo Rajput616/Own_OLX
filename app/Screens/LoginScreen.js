@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Screen from "../components/Screen";
 import AppStyles from "../config/AppStyles";

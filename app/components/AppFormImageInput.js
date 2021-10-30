@@ -2,7 +2,6 @@ import { useFormikContext } from "formik";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import Colors from "../config/Colors";
-import AppPicker from "./AppPicker";
 import AppText from "./AppText";
 import ImageInputList from "./ImageInputList";
 
