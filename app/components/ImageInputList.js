@@ -2,20 +2,16 @@ import React, { useRef, useState } from "react";
 import { Image, ScrollView, StyleSheet, View } from "react-native";
 import ImageInput from "./ImageInput";
 
-function ImageInputList({ onChange }) {
-  const [imageUris, setImageUris] = useState([]);
-
+function ImageInputList({ onChange, imageUris }) {
   const scrollView = useRef();
 
   const handleImageAddition = (uri) => {
     const newImageUris = [...imageUris, uri];
-    setImageUris(newImageUris);
     onChange(newImageUris);
   };
 
   const handleImageDeletion = (uri) => {
     const newImageUris = imageUris.filter((i) => i != uri);
-    setImageUris(newImageUris);
     onChange(newImageUris);
   };
 

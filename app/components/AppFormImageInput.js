@@ -7,15 +7,20 @@ import AppText from "./AppText";
 import ImageInputList from "./ImageInputList";
 
 function AppFormImageInput({ name, width, ...otherProps }) {
-  const { setFieldValue, errors } = useFormikContext();
+  const { setFieldValue, setFieldTouched, errors, touched, values } =
+    useFormikContext();
 
   return (
     <View style={styles.container}>
       <ImageInputList
-        onChange={(imageUris) => setFieldValue(name, imageUris)}
+        onChange={(imageUris) => {
+          setFieldTouched(name);
+          setFieldValue(name, imageUris);
+        }}
+        imageUris={values[name]}
       />
 
-      {errors[name] && (
+      {errors[name] && touched[name] && (
         <AppText style={styles.errorMessage}>{errors[name]}</AppText>
       )}
     </View>

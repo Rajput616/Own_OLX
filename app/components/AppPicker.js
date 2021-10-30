@@ -77,9 +77,9 @@ const AppPicker = ({
   style,
   width = "100%",
   onSelectItem,
+  selectedItem,
   ...otherProps
 }) => {
-  const [selectedItem, setSelectedItem] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -119,7 +119,6 @@ const AppPicker = ({
               item={item}
               onPress={() => {
                 setModalVisible(false);
-                setSelectedItem(item);
                 onSelectItem(item);
               }}
             />

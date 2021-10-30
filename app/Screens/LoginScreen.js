@@ -29,7 +29,7 @@ function LoginScreen({ navigation }) {
       />
 
       <AppForm
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: "saurabh@tcs.com", password: "123214" }}
         onSubmit={(values) => handleLogin(values)}
         validationSchema={validationSchema}
       >

@@ -6,13 +6,15 @@ import AppText from "./AppText";
 import AppTextInput from "./AppTextInput";
 
 const AppFormField = React.forwardRef(({ name, width, ...otherProps }, ref) => {
-  const { handleChange, setFieldTouched, errors, touched } = useFormikContext();
+  const { setFieldValue, setFieldTouched, errors, touched, values } =
+    useFormikContext();
 
   return (
     <View style={styles.container}>
       <AppTextInput
         style={styles.textInput}
-        onChangeText={handleChange(name)}
+        onChangeText={(text) => setFieldValue(name, text)}
+        value={values[name]}
         onBlur={() => setFieldTouched(name)}
         {...otherProps}
         ref={ref}

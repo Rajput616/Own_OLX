@@ -8,44 +8,56 @@ import AppFormPicker from "../components/AppFormPicker";
 import AppFormButton from "../components/AppFormButton";
 import AppFormImageInput from "../components/AppFormImageInput";
 import listingsApi from "../api/listings";
+import UploadView from "../components/UploadView";
 
 const validationSchema = Yup.object().shape({
   images: Yup.array().required().min(1, "Please select at least 1 image"),
   title: Yup.string().required().label("Title"),
   price: Yup.string().required().label("Price"),
-  category: Yup.string().required().label("Category"),
+  category: Yup.object().required().nullable().label("Category"),
 });
 
 function ListingEditScreen(props) {
   const [progress, setProgress] = useState(0);
+  const [uploadVisible, setUploadVisible] = useState(false);
 
   const onUploadProgress = (progress) => {
     setProgress(progress);
   };
 
-  const addListing = async (listing) => {
+  const addListing = async (listing, { resetForm }) => {
+    setProgress(0);
+    setUploadVisible(true);
     const response = await listingsApi.addListings(listing, onUploadProgress);
 
     if (!response.ok) {
-      return alert("Listing couldn't be added. Please try again");
+      setUploadVisible(false);
+      setTimeout(() => {
+        alert("Listing couldn't be added. Please try again");
+      }, 1000);
+
+      return;
     }
 
-    //show success
-
-    alert("Listing created successfully");
+    resetForm();
   };
 
   return (
     <Screen style={styles.container}>
+      <UploadView
+        onDone={() => setUploadVisible(false)}
+        progress={progress}
+        visible={uploadVisible}
+      />
       <AppForm
         initialValues={{
-          images: "",
+          images: [],
           title: "",
           price: "",
-          category: "",
+          category: null,
           description: "",
         }}
-        onSubmit={(listing) => addListing(listing)}
+        onSubmit={addListing}
         validationSchema={validationSchema}
       >
         <AppFormImageInput name="images" />
